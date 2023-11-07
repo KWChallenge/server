@@ -1,4 +1,4 @@
-package com.challenge.ChallengeServer;
+package com.challenge.ChallengeServer.Service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
