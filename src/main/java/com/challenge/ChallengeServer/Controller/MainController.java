@@ -1,6 +1,6 @@
 package com.challenge.ChallengeServer.Controller;
-// 세연
+// 서연
 
 
-public class AuthController {
+public class MainController {
 }
