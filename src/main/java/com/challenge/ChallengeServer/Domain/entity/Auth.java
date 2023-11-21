@@ -16,7 +16,7 @@ import java.util.List;
 public class Auth extends Time{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    private Long auth_id;
 
     @Column(nullable = false)
     private String name;
@@ -33,6 +33,8 @@ public class Auth extends Time{
     @OneToMany(mappedBy = "auth", cascade = CascadeType.ALL, orphanRemoval = true)
     public List<AuthChallenge> authChallenges = new ArrayList<>();
 
+    @OneToMany(mappedBy = "auth", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<Challenge> challenges = new ArrayList<>();
     @Builder
     public Auth(String name, String email, String password, boolean agreement) {
         this.name = name;
@@ -51,6 +53,11 @@ public class Auth extends Time{
         if (!isPasswordMatched(password)) {
             throw new BadRequestException("비밀번호가 일치하지 않습니다.");
         }
+    }
+
+    public void addChallenge(Challenge challenge){
+        challenges.add(challenge);
+        challenge.setAuth(this);
     }
 
     public boolean isPasswordMatched(String password) {

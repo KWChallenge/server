@@ -23,6 +23,7 @@ public class Challenge extends Time {
 
     //null = false 는 항상 값을 가져와야하기 때문에
     //안뜨게 하는게 좋음
+
     @Column
     private String photo;
 
@@ -31,6 +32,10 @@ public class Challenge extends Time {
 
     @Column(nullable = false)
     private Boolean success;
+
+    @ManyToOne
+    @JoinColumn(name = "auth_id")
+    private Auth auth;
 
     @Builder
     public Challenge(String challenge_name, LocalDate date,
@@ -42,7 +47,16 @@ public class Challenge extends Time {
         this.success = success;
     }
 
+    public Auth getAuth(){
+        return auth;
+    }
+
+    public void  setAuth(Auth auth){
+        this.auth = auth;
+    }
+
     public void setPhoto(String photo){
         this.photo = photo;
     }
+    public void setReview(String review){this.review = review; }
 }

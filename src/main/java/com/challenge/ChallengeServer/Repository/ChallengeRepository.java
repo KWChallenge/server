@@ -4,6 +4,7 @@ import com.challenge.ChallengeServer.Domain.entity.Challenge;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.swing.text.html.Option;
+import java.util.List;
 import java.util.Optional;
 
 public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
@@ -14,5 +15,7 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
     //Notnull: 없으면 반환값이 없음
     //Optional : 값이 존재할 수 있고 없을 수 도 있을 때 불러오는 거, 없을때도 있어서 이걸로 함
     //값이 감싸고, 값이 없으면 null 대신 Optional.empty()
+    /*
     Optional<Challenge> findByChallenge_idAndPhotoNotNull(Long challenge_id);
+    Optional<Challenge> findByAuth(Long auth_id);*/
 }
