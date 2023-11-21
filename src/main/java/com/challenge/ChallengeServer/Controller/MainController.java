@@ -20,6 +20,7 @@ public class MainController {
         this.mainService = mainService;
     }
 
+    //show server
     @GetMapping("/{authId}")
     public Challenge showChallenge(){
         return mainService.getChallengeOfTheDay();
