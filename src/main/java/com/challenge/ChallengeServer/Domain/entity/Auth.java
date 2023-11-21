@@ -1,6 +1,7 @@
 package com.challenge.ChallengeServer.Domain.entity;
 
 import com.challenge.ChallengeServer.Domain.Dto.request.AuthRequestDto;
+import com.challenge.ChallengeServer.Exception.BadRequestException;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -44,5 +45,15 @@ public class Auth extends Time{
         this.name = dto.getName();
         this.email = dto.getEmail();
         this.password = dto.getPassword();
+    }
+
+    public void validatePassword(String password) {
+        if (!isPasswordMatched(password)) {
+            throw new BadRequestException("비밀번호가 일치하지 않습니다.");
+        }
+    }
+
+    public boolean isPasswordMatched(String password) {
+        return this.password.equals(password);
     }
 }
