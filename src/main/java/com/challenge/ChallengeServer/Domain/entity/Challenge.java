@@ -33,6 +33,8 @@ public class Challenge extends Time {
     @Column(nullable = false)
     private Boolean success;
 
+
+
     @Builder
     public Challenge(String challenge_name, String icon, LocalDate date,
                      String photo, String review, Boolean success) {
