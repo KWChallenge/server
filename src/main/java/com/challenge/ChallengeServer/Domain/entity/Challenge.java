@@ -21,15 +21,10 @@ public class Challenge extends Time {
     @Column(nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
-    private String photoName;
-
-    @Column(nullable = false)
-    private String photoPath;
-
-    //???
-    @Column(nullable = false)
-    private  String origPhotoname;
+    //null = false 는 항상 값을 가져와야하기 때문에
+    //안뜨게 하는게 좋음
+    @Column
+    private String photo;
 
     @Column
     private String review;
@@ -39,14 +34,15 @@ public class Challenge extends Time {
 
     @Builder
     public Challenge(String challenge_name, LocalDate date,
-                     String photoName, String photoPath, String origPhotoname,
-                     String review, Boolean success) {
+                     String photo, String review, Boolean success) {
         this.challenge_name = challenge_name;
         this.date = date;
-        this.photoName = photoName;
-        this.photoPath = photoPath;
-        this.origPhotoname = origPhotoname;
+        this.photo = photo;
         this.review = review;
         this.success = success;
+    }
+
+    public void setPhoto(String photo){
+        this.photo = photo;
     }
 }
