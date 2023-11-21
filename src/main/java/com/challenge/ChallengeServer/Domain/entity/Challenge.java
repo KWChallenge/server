@@ -19,13 +19,17 @@ public class Challenge extends Time {
     private String challenge_name;
 
     @Column(nullable = false)
-    private String icon;
-
-    @Column(nullable = false)
     private LocalDate date;
 
-    @Column
-    private String photo;
+    @Column(nullable = false)
+    private String photoName;
+
+    @Column(nullable = false)
+    private String photoPath;
+
+    //???
+    @Column(nullable = false)
+    private  String origPhotoname;
 
     @Column
     private String review;
@@ -34,12 +38,14 @@ public class Challenge extends Time {
     private Boolean success;
 
     @Builder
-    public Challenge(String challenge_name, String icon, LocalDate date,
-                     String photo, String review, Boolean success) {
+    public Challenge(String challenge_name, LocalDate date,
+                     String photoName, String photoPath, String origPhotoname,
+                     String review, Boolean success) {
         this.challenge_name = challenge_name;
-        this.icon = icon;
         this.date = date;
-        this.photo = photo;
+        this.photoName = photoName;
+        this.photoPath = photoPath;
+        this.origPhotoname = origPhotoname;
         this.review = review;
         this.success = success;
     }
